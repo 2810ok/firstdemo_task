@@ -1,0 +1,19 @@
+.spacer {
+    flex: 1;
+  }
+  
+  img {
+    cursor: pointer;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+

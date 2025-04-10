@@ -1,0 +1,90 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="centered-form">
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Search account</mat-label>
+        <input 
+          type="text" 
+          matInput 
+          formControlName="input" 
+          [matAutocomplete]="auto"
+        >
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        
+     
+        <mat-error *ngIf="form.get('input')?.hasError('required')">
+          Account search is required
+        </mat-error>
+        <mat-error *ngIf="form.get('input')?.hasError('maxlength')">
+          Maximum 10 characters allowed
+        </mat-error>
+      </mat-form-field>
+  
+    <mat-form-field floatLabel="always" class="form-field">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" formControlName="amount" class="example-right-align" placeholder="0" />
+      <span matTextPrefix>$&nbsp;</span>
+      <span matTextSuffix>.00</span>
+
+      <mat-error *ngIf="form.get('amount')?.hasError('required')">
+        amount is required
+      </mat-error>
+      <mat-error *ngIf="form.get('amount')?.hasError('minlength')">
+        minimum 2 lenght is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-slide-toggle formControlName="repeatTransaction" class="form-field">
+      Repeat the transaction
+    </mat-slide-toggle>
+
+    <ng-container *ngIf="form.get('repeatTransaction')?.value">
+      <div class="date-pickers-container">
+        <mat-form-field class="form-field">
+          <mat-label>Choose start date</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="startDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+  
+        <mat-form-field class="form-field">
+          <mat-label>Choose end date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="endDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  
+    <mat-form-field class="form-field wide-field">
+      <mat-label>Add the description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Ex. for emi transaction..."></textarea>
+   
+      <mat-error *ngIf="form.get('description')?.hasError('required')">
+        Description is required
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('minlength')">
+        Description must be at least 5 character
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+        Description cannot exceed 100 characters
+      </mat-error>
+        
+      <mat-hint align="end">
+        {{ form.get('description')?.value?.length || 0 }}/{{maxlengthd}}
+      </mat-hint>
+    </mat-form-field>
+  
+  
+    <div class="button-row">
+      <button mat-stroked-button type="submit" routerLink="/home">Cancel</button>
+      <button mat-stroked-button color="primary"  [disabled]="form.invalid" type="submit">Submit</button>
+    </div>
+    
+  </form>
