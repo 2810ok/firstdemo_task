@@ -50,14 +50,29 @@
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
   
-        <mat-form-field class="form-field">
+    
+        <div>
+          <mat-error *ngIf="form.hasError('startDateTooEarly')"  >
+            Start date must be at least tomorrow
+          </mat-error>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" >
           <mat-label>Choose end date</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="endDate">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <div>
+          <mat-error *ngIf="form.hasError('endDateTooEarly')">
+            End date must be at least 7 days after start date
+          </mat-error>
+          <mat-error *ngIf="form.hasError('endDateTooLate')">
+            End date cannot be more than 1 year after start date
+          </mat-error>
+          </div>
         </mat-form-field>
       </div>
     </ng-container>

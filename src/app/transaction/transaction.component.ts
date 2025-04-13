@@ -1,8 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { dateRangeValidator } from '../dateRangeValidator';
 
 @Component({
   selector: 'app-transaction',
@@ -10,20 +10,29 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit {
-  title="my";
+  title = "my";
   form: FormGroup;
   options: string[] = ['1234567890', '9876543210', '4567891230'];
-  maxlengthd=100;
+  maxlengthd = 100;
   filteredOptions!: Observable<string[]>;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      input: ['',[Validators.required,Validators.maxLength(10)]],
-      amount: ['',[Validators.required,Validators.minLength(2)]],
+      input: ['', [Validators.required, Validators.maxLength(10)]],
+      amount: ['', [Validators.required, Validators.minLength(2)]],
       repeatTransaction: [false],
       startDate: [null],
       endDate: [null],
-      description: ['',[Validators.required,Validators.minLength(5),Validators.maxLength(this.maxlengthd)]]
+      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(this.maxlengthd)]]
+    }, { validators: dateRangeValidator() });
+
+
+    this.form.get('startDate')?.valueChanges.subscribe(() => {
+      this.form.updateValueAndValidity();
+    });
+
+    this.form.get('endDate')?.valueChanges.subscribe(() => {
+      this.form.updateValueAndValidity();
     });
   }
 
@@ -43,7 +52,6 @@ export class TransactionComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       console.log('Form submitted:', this.form.value);
-  
     }
   }
 
