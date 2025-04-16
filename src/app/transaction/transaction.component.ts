@@ -27,13 +27,6 @@ export class TransactionComponent implements OnInit {
     }, { validators: dateRangeValidator() });
 
 
-    this.form.get('startDate')?.valueChanges.subscribe(() => {
-      this.form.updateValueAndValidity();
-    });
-
-    this.form.get('endDate')?.valueChanges.subscribe(() => {
-      this.form.updateValueAndValidity();
-    });
   }
 
   ngOnInit() {
