@@ -30,7 +30,8 @@ export function dateRangeValidator(): ValidatorFn {
 
         // Check if end date is at least 7 days after start date
         const minEndDate = new Date(start);
-        minEndDate.setDate(minEndDate.getDate() + 7);
+        minEndDate.setDate(minEndDate.getDate());
+        
         
         if (end < minEndDate) {
           errors['endDateTooEarly'] = {
