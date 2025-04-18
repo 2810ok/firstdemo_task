@@ -1,7 +1,11 @@
 <div class="dashboard-container">
     <div class="table-section">
       <h2>Users Data</h2>
-      <div *ngIf="loadingUsers" class="loading">Loading users...</div>
+      <div *ngIf="loadingUsers" class="loading-spinner">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+      
+    <!--  <div *ngIf="loadingUsers" class="loading">Loading users...</div>-->
       <div *ngIf="errorUsers" class="error">{{ errorUsers }}</div>
       
       <table *ngIf="users.length > 0 && !loadingUsers && !errorUsers">
