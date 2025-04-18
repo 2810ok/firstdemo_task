@@ -32,7 +32,11 @@
   
     <div class="table-section">
       <h2>Posts Data</h2>
-      <div *ngIf="loadingPosts" class="loading">Loading posts...</div>
+      <div *ngIf="loadingPosts" class="loading-spinner">
+  <mat-spinner diameter="40"></mat-spinner>
+      </div>
+      
+      <!--  <div *ngIf="loadingUsers" class="loading">Loading posts...</div>-->
       <div *ngIf="errorPosts" class="error">{{ errorPosts }}</div>
       
       <table *ngIf="posts.length > 0 && !loadingPosts && !errorPosts">
