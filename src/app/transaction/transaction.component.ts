@@ -32,9 +32,6 @@ export class TransactionComponent implements OnInit {
   console.log(this.maxDate);
   }
 
-  
-  
-
   ngOnInit() {
     this.filteredOptions = this.form.get('input')!.valueChanges.pipe(
       startWith(''),
@@ -77,8 +74,8 @@ export class TransactionComponent implements OnInit {
     const maxValidDate = new Date(start); //if you put null it show error
     maxValidDate.setDate(start.getDate() + 7);
   
-    return end < maxValidDate; // True if endDate > startDate + 7 days
-    console.log(endDate);
+    return end < maxValidDate; // True if endDate < startDate + 7 days
+    
   }
 
   

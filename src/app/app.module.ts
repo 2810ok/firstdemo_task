@@ -17,13 +17,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { HistoryComponent } from './history/history.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactionComponent,
     NavbarComponent,
-    HistoryComponent
+    HistoryComponent,
+    DashboardComponent
   ],
   imports: [
 
@@ -37,7 +42,8 @@ import { HistoryComponent } from './history/history.component';
     MatFormFieldModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatNativeDateModule,MatToolbarModule,RouterOutlet,AppRoutingModule,RouterLink
+    MatNativeDateModule,MatToolbarModule,RouterOutlet,AppRoutingModule,RouterLink,
+    HttpClientModule,MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

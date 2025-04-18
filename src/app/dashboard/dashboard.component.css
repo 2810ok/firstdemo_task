@@ -1,0 +1,64 @@
+.dashboard-container {
+    padding: 24px;
+    display: grid;
+    gap: 24px;
+  }
+  
+  .table-section {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  .status-message {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 4px;
+  }
+  
+  .status-message.loading {
+    background: #f5f5f5;
+    color: #666;
+  }
+  
+  .status-message.error {
+    background: #ffebee;
+    color: #d32f2f;
+  }
+  
+  .status-message.error h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+  }
+  
+  .status-message.error p {
+    margin: 0 0 12px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  th {
+    background-color: #f5f5f5;
+    font-weight: 500;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+  .error
+  {
+    color: red;
+  }

@@ -1,0 +1,53 @@
+<div class="dashboard-container">
+    <div class="table-section">
+      <h2>Users Data</h2>
+      <div *ngIf="loadingUsers" class="loading">Loading users...</div>
+      <div *ngIf="errorUsers" class="error">{{ errorUsers }}</div>
+      
+      <table *ngIf="users.length > 0 && !loadingUsers && !errorUsers">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.address?.city }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="table-section">
+      <h2>Posts Data</h2>
+      <div *ngIf="loadingPosts" class="loading">Loading posts...</div>
+      <div *ngIf="errorPosts" class="error">{{ errorPosts }}</div>
+      
+      <table *ngIf="posts.length > 0 && !loadingPosts && !errorPosts">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td>{{ post.id }}</td>
+            <td>{{ post.userId }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.body  }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
