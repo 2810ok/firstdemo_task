@@ -20,7 +20,7 @@ import { HistoryComponent } from './history/history.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,MatToolbarModule,RouterOutlet,AppRoutingModule,RouterLink,
-    HttpClientModule,MatIconModule
+    HttpClientModule,MatIconModule,MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

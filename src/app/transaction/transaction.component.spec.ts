@@ -97,7 +97,7 @@ describe('TransactionComponent', () => {
     invalidFutureDate.setFullYear(tomorrow.getFullYear() + 1);
     invalidFutureDate.setDate(tomorrow.getDate() + 1);
 
-    // Test start date validation
+    //Test start date validation
     component.form.get('startDate')?.setValue(today);
     component.form.updateValueAndValidity();
     expect(component.form.hasError('startDateTooEarly')).toBeTrue();
